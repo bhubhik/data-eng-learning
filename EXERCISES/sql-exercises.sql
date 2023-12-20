@@ -51,3 +51,13 @@ FROM categories AS c
 			AND to_char(order_date, 'yyyy-MM') = '2014-01'
 GROUP BY c.category_id
 ORDER BY c.category_id;
+
+--EXERCISE 5
+SELECT d.*, count(*) AS product_count
+FROM departments AS d
+	JOIN categories AS c
+		ON c.category_department_id = d.department_id
+	JOIN products AS p
+		ON p.product_category_id = c.category_id
+GROUP BY d.department_id
+ORDER BY 1;
